@@ -2,4 +2,4 @@
 
 # DONTS
 * If you're using Win10: DO NOT UPDATE THE FIRMWARE OF THE FRDM-KL25
-* check your .gitignore files
+* check always your .gitignore files
