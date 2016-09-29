@@ -14,3 +14,16 @@
 | Freedomboard |    |
 | Remote |          |
 | Debugger |        |
+
+# Git commands
+
+| Command  | Description |
+|----------|-------------|
+| add      | |
+| commit   | |
+| pull     | |
+| push     | |
+| clone    | |
+| checkout | |
+| rebase   | |
+| fetch    | |
