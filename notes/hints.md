@@ -6,3 +6,11 @@
 # DOS
 * check always your .gitignore files
 * always close the projects you're pulling from remote
+
+# Processors
+
+| Board | Processor |
+|-------|-----------|
+| Freedomboard |    |
+| Remote |          |
+| Debugger |        |
