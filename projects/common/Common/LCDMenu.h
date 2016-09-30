@@ -50,7 +50,7 @@ void LCDMenu_Deinit(void);
  */
 void LCDMenu_Init(void);
 
-#if /* PL_CONFIG_HAS_LCD_MENU */
+#endif /* PL_CONFIG_HAS_LCD_MENU */
 
 #endif /* SOURCES_LCDMENU_H_ */
 
