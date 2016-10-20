@@ -37,7 +37,7 @@ void EVNT_SetEvent(EVNT_Handle event) {
 
 void EVNT_ClearEvent(EVNT_Handle event) {
 	/* \todo Make it reentrant */
-	CS1_CrirticalVariable()
+	CS1_CriticalVariable()
 	CS1_EnterCritical();
 	CLR_EVENT(event);
 	CS1_ExitCritical();

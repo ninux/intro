@@ -16,7 +16,7 @@
 #include "Platform_Local.h" /* local project configuration, present in each project (FRDM, Robot, Remote, ...) */
 
 /* check local platform configuration */
-#if PL_LOCAL_CONFIG_BOARD_IS_ROBO
+#if PL_CONFIG_BOARD_IS_ROBO
   #define PL_CONFIG_BOARD_IS_FRDM     (0)
   #define PL_CONFIG_BOARD_IS_REMOTE   (0)
   #define PL_CONFIG_BOARD_IS_ROBO     (1)
@@ -27,13 +27,13 @@
     #define PL_CONFIG_BOARD_IS_ROBO_V1  (1)
     #define PL_CONFIG_BOARD_IS_ROBO_V2  (0)
   #endif
-#elif PL_LOCAL_CONFIG_BOARD_IS_FRDM
+#elif PL_CONFIG_BOARD_IS_FRDM
   #define PL_CONFIG_BOARD_IS_FRDM     (1)
   #define PL_CONFIG_BOARD_IS_REMOTE   (0)
   #define PL_CONFIG_BOARD_IS_ROBO     (0)
   #define PL_CONFIG_BOARD_IS_ROBO_V1  (0)
   #define PL_CONFIG_BOARD_IS_ROBO_V2  (0)
-#elif PL_LOCAL_CONFIG_BOARD_IS_REMOTE
+#elif PL_CONFIG_BOARD_IS_REMOTE
   #define PL_CONFIG_BOARD_IS_FRDM     (0)
   #define PL_CONFIG_BOARD_IS_REMOTE   (1)
   #define PL_CONFIG_BOARD_IS_ROBO     (0)
@@ -44,26 +44,26 @@
 #endif
 
 /* configuration from local config */
-#define PL_CONFIG_NOF_LEDS      PL_LOCAL_CONFIG_NOF_LEDS /* number of LEDs */
-#define PL_CONFIG_NOF_KEYS      PL_LOCAL_CONFIG_NOF_KEYS /* number of keys */
-#define PL_CONFIG_KEY_1_ISR     PL_LOCAL_CONFIG_KEY_1_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_2_ISR     PL_LOCAL_CONFIG_KEY_2_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_3_ISR     PL_LOCAL_CONFIG_KEY_3_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_4_ISR     PL_LOCAL_CONFIG_KEY_4_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_5_ISR     PL_LOCAL_CONFIG_KEY_5_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_6_ISR     PL_LOCAL_CONFIG_KEY_6_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_7_ISR     PL_LOCAL_CONFIG_KEY_7_ISR /* if key is using interrupt */
+#define PL_CONFIG_NOF_LEDS      PL_CONFIG_NOF_LEDS /* number of LEDs */
+#define PL_CONFIG_NOF_KEYS      PL_CONFIG_NOF_KEYS /* number of keys */
+#define PL_CONFIG_KEY_1_ISR     PL_CONFIG_KEY_1_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_2_ISR     PL_CONFIG_KEY_2_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_3_ISR     PL_CONFIG_KEY_3_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_4_ISR     PL_CONFIG_KEY_4_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_5_ISR     PL_CONFIG_KEY_5_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_6_ISR     PL_CONFIG_KEY_6_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_7_ISR     PL_CONFIG_KEY_7_ISR /* if key is using interrupt */
 #define PL_CONFIG_HAS_KBI       (PL_CONFIG_KEY_1_ISR||PL_CONFIG_KEY_2_ISR||PL_CONFIG_KEY_3_ISR||PL_CONFIG_KEY_4_ISR||PL_CONFIG_KEY_5_ISR||PL_CONFIG_KEY_6_ISR||PL_CONFIG_KEY_7_ISR)
 
 /* driver configuration: first entry (0 or 1) disables or enables the driver. Using the _DISABLED define the local configuration can disable it too */
 /* general features: */
-#define PL_CONFIG_HAS_LEDS              (1 && !defined(PL_LOCAL_CONFIG_HAS_LEDS_DISABLED)) /* LED driver */
-#define PL_CONFIG_HAS_EVENTS            (1 && !defined(PL_LOCAL_CONFIG_HAS_EVENTS_DISABLED)) /* event driver */
-#define PL_CONFIG_HAS_TIMER             (1 && !defined(PL_LOCAL_CONFIG_CONFIG_HAS_TIMER_DISABLED)) /* timer interrupts */
-#define PL_CONFIG_HAS_KEYS              (1 && !defined(PL_LOCAL_CONFIG_HAS_KEYS_DISABLED)) /* support for keys */
-#define PL_CONFIG_HAS_TRIGGER           (1 && !defined(PL_LOCAL_CONFIG_HAS_TRIGGER_DISABLED)) /* support for triggers */
-#define PL_CONFIG_HAS_DEBOUNCE          (1 && !defined(PL_LOCAL_CONFIG_HAS_DEBOUNCE_DISABLED)) /* support for debouncing */
-#define PL_CONFIG_HAS_RTOS              (1 && !defined(PL_LOCAL_CONFIG_HAS_RTOS_DISABLED)) /* RTOS support */
+#define PL_CONFIG_HAS_LEDS              (1 && !defined(PL_CONFIG_HAS_LEDS_DISABLED)) /* LED driver */
+#define PL_CONFIG_HAS_EVENTS            (1 && !defined(PL_CONFIG_HAS_EVENTS_DISABLED)) /* event driver */
+#define PL_CONFIG_HAS_TIMER             (1 && !defined(PL_CONFIG_CONFIG_HAS_TIMER_DISABLED)) /* timer interrupts */
+#define PL_CONFIG_HAS_KEYS              (1 && !defined(PL_CONFIG_HAS_KEYS_DISABLED)) /* support for keys */
+#define PL_CONFIG_HAS_TRIGGER           (1 && !defined(PL_CONFIG_HAS_TRIGGER_DISABLED)) /* support for triggers */
+#define PL_CONFIG_HAS_DEBOUNCE          (1 && !defined(PL_CONFIG_HAS_DEBOUNCE_DISABLED)) /* support for debouncing */
+#define PL_CONFIG_HAS_RTOS              (1 && !defined(PL_CONFIG_HAS_RTOS_DISABLED)) /* RTOS support */
 #define PL_CONFIG_HAS_SHELL             (1 && !defined(PL_CONFIG_HAS_SHELL_DISABLED)) /* shell support disabled for now */
 #define PL_CONFIG_HAS_SEGGER_RTT        (1 && !defined(PL_CONFIG_HAS_SEGGER_RTT_DISABLED) && PL_CONFIG_HAS_SHELL) /* using RTT with shell */
 #define PL_CONFIG_HAS_SHELL_QUEUE       (1 && !defined(PL_CONFIG_HAS_SHELL_QUEUE_DISABLED) && PL_CONFIG_HAS_SHELL) /* enable shell queueing */
@@ -81,7 +81,7 @@
 #define PL_CONFIG_HAS_JOYSTICK          (1 && !defined(PL_CONFIG_HAS_JOYSTICK_DISABLED) && PL_CONFIG_BOARD_IS_FRDM)
 
 /* robot specific features: */
-#define PL_CONFIG_HAS_BUZZER            (1 && !defined(PL_LOCAL_CONFIG_HAS_BUZZER_DISABLED) && PL_CONFIG_BOARD_IS_ROBO) /* support for buzzer */
+#define PL_CONFIG_HAS_BUZZER            (1 && !defined(PL_CONFIG_HAS_BUZZER_DISABLED) && PL_CONFIG_BOARD_IS_ROBO) /* support for buzzer */
 #define PL_CONFIG_HAS_BLUETOOTH         (1 && !defined(PL_CONFIG_HAS_BLUETOOTH_DISABLED) && PL_CONFIG_BOARD_IS_ROBO)
 #define PL_CONFIG_HAS_MOTOR             (1 && !defined(PL_CONFIG_HAS_MOTOR_DISABLED) && PL_CONFIG_BOARD_IS_ROBO)
 #define PL_CONFIG_HAS_QUADRATURE        (1 && !defined(PL_CONFIG_HAS_QUADRATURE_DISABLED) && PL_CONFIG_HAS_MOTOR)
