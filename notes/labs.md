@@ -4,7 +4,7 @@
 
 | No. |Topic                  | ninux | blaine |
 |-----|-----------------------|-------|--------|
-| 1   | Start                 | | |
+| 1   | Start                 | - [] | - [] |
 | 2   | Recap                 | | |
 | 3   | GitHub                | | |
 | 4   | First Projects        | | |
