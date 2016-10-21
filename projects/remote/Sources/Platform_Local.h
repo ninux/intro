@@ -12,7 +12,7 @@
 #define SOURCES_PLATFORM_LOCAL_H_
 
 /* board identification: */
-#define PL_LOCAL_CONFIG_BOARD_IS_REMOTE     (1) /* I'm the REMOTE board */
+#define PL_CONFIG_BOARD_IS_REMOTE     (1) /* I'm the REMOTE board */
 
 /* platform hardware configuration */
 #define PL_LOCAL_CONFIG_NOF_LEDS            (1) /* number of LEDs, 0 to 3 */
