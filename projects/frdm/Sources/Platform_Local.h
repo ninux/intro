@@ -12,7 +12,7 @@
 #define SOURCES_PLATFORM_LOCAL_H_
 
 /* board identification: */
-#define PL_LOCAL_CONFIG_BOARD_IS_FRDM     (1) /* I'm the FRDM board */
+#define PL_CONFIG_BOARD_IS_FRDM     (1) /* I'm the FRDM board */
 
 /* platform hardware configuration */
 #define PL_LOCAL_CONFIG_NOF_LEDS          (3) /* number of LEDs, 0 to 3 */

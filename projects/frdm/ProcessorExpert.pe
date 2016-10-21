@@ -3,7 +3,7 @@
   <Header>
     <Name>frdm</Name>
     <SavedBy>Erich Styger Local</SavedBy>
-    <ModificationStamp>9</ModificationStamp>
+    <ModificationStamp>10</ModificationStamp>
     <Date>2016-09-20</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1550-0615</PEversion>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>90</ProjectCompNumb>
+    <ProjectCompNumb>91</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -4545,7 +4545,7 @@
       <ItemId32>60</ItemId32>
       <Value32>false</Value32>
       <ItemId33>62</ItemId33>
-      <Value33>false</Value33>
+      <Value33>true</Value33>
       <ItemId34>73</ItemId34>
       <Value34>false</Value34>
       <ItemId35>75</ItemId35>
@@ -29401,7 +29401,7 @@
     <BeanType>FreeRTOS</BeanType>
     <Name>FRTOS1</Name>
     <CompNumb>62</CompNumb>
-    <CompEnabled>false</CompEnabled>
+    <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
     <IconName>FreeRTOS</IconName>
     <UserFolderName />

@@ -36,6 +36,7 @@
 #include "BitIoLdd11.h"
 #include "LEDPin3.h"
 #include "BitIoLdd12.h"
+#include "FRTOS1.h"
 #include "WAIT1.h"
 #include "UTIL1.h"
 #include "KSDK1.h"
