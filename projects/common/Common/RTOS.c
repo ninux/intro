@@ -19,7 +19,7 @@ static void AppTask(void* param) {
   (void)param; /* avoid compiler warning */
   for(;;) {
     if (*whichLED==1) {
-      LED1_Neg();
+      LED3_Neg();
     } else if (*whichLED==2) {
       LED2_Neg();
     }
