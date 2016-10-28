@@ -24,7 +24,7 @@ static void AppTask(void* param) {
       LED2_Neg();
     }
     /* \todo handle your application code here */
-    //FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
+    FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
   }
 }
 
