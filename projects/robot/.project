@@ -34,7 +34,7 @@
 		<link>
 			<name>Sources/Common</name>
 			<type>2</type>
-			<location>F:/intro/projects/common/Common</location>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/common/Common</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

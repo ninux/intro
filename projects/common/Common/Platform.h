@@ -44,8 +44,8 @@
 #endif
 
 /* configuration from local config */
-#define PL_CONFIG_NOF_LEDS      PL_CONFIG_NOF_LEDS /* number of LEDs */
-#define PL_CONFIG_NOF_KEYS      PL_CONFIG_NOF_KEYS /* number of keys */
+#define PL_CONFIG_NOF_LEDS      PL_LOCAL_CONFIG_NOF_LEDS /* number of LEDs */
+#define PL_CONFIG_NOF_KEYS      PL_LOCAL_CONFIG_NOF_KEYS /* number of keys */
 #define PL_CONFIG_KEY_1_ISR     PL_CONFIG_KEY_1_ISR /* if key is using interrupt */
 #define PL_CONFIG_KEY_2_ISR     PL_CONFIG_KEY_2_ISR /* if key is using interrupt */
 #define PL_CONFIG_KEY_3_ISR     PL_CONFIG_KEY_3_ISR /* if key is using interrupt */

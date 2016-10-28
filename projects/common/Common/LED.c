@@ -20,12 +20,13 @@ void LED_Deinit(void) {
 }
 
 void LED_Init(void) {
-  //LED1_Off();
-  //LED2_Off();
-  //LED3_Off();
-  LED1_On();
-  LED2_On();
-  LED3_On();
+	LED1_On();
+	LED2_On();
+	LED3_On();
+	for(volatile int i=0;i<100000;i++){};
+	LED1_Off();
+	LED2_Off();
+	LED3_Off();
 }
 
 #endif /* PL_CONFIG_HAS_LEDS */
