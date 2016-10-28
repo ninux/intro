@@ -19,9 +19,11 @@ static void AppTask(void* param) {
   (void)param; /* avoid compiler warning */
   for(;;) {
     if (*whichLED==1) {
-      LED3_Neg();
+      LED1_Neg();
     } else if (*whichLED==2) {
       LED2_Neg();
+    } else if (*whichLED==3) {
+      LED3_Neg();
     }
     /* \todo handle your application code here */
     FRTOS1_vTaskDelay(pdMS_TO_TICKS(500));
@@ -31,10 +33,11 @@ static void AppTask(void* param) {
 void RTOS_Init(void) {
   static const int led1 = 1;
   static const int led2 = 2;
+  static const int led3 = 3;
 
   EVNT_SetEvent(EVNT_STARTUP); /* set startup event */
   /*! \todo Create tasks here */
-  if (FRTOS1_xTaskCreate(AppTask, (signed portCHAR *)"App1", configMINIMAL_STACK_SIZE, (void*)&led1, tskIDLE_PRIORITY, NULL) != pdPASS) {
+  if (FRTOS1_xTaskCreate(AppTask, (signed portCHAR *)"App1", configMINIMAL_STACK_SIZE, (void*)&led2, tskIDLE_PRIORITY, NULL) != pdPASS) {
     for(;;){} /* error case only, stay here! */
   }
 }
