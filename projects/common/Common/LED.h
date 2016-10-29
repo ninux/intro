@@ -10,6 +10,7 @@
 #define SOURCES_INTRO_COMMON_MASTER_LED_H_
 
 #include "Platform.h"
+#include "WAIT1.h"
 
 #if PL_CONFIG_HAS_LEDS
 
@@ -89,6 +90,7 @@
 
 void LED_Init(void); /* driver initialization */
 void LED_Deinit(void); /* driver deinitialization */
+void LED_Blink(uint8_t nob); /* blink led */
 #endif /* PL_CONFIG_HAS_LEDS */
 
 #endif /* SOURCES_INTRO_COMMON_MASTER_LED_H_ */

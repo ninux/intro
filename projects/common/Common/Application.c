@@ -104,6 +104,10 @@ static void APP_AdoptToHardware(void) {
 }
 
 void APP_Start(void) {
+
+	//LED_Init();
+	//LED_Blink(10);
+
 #if PL_CONFIG_HAS_RTOS
 #if configUSE_TRACE_HOOKS
   PTRC1_uiTraceStart();

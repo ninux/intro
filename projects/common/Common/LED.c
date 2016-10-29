@@ -23,10 +23,24 @@ void LED_Init(void) {
 	LED1_On();
 	LED2_On();
 	LED3_On();
-	for(volatile int i=0;i<100000;i++){};
+	WAIT1_Waitms(1000);
 	LED1_Off();
 	LED2_Off();
 	LED3_Off();
+}
+
+void LED_Blink(uint8_t nob) {
+	uint8_t i = nob;
+	for (i = nob; i > 0; i--) {
+		LED1_On();
+		LED2_On();
+		LED3_On();
+		WAIT1_Waitms(1000);
+		LED1_Off();
+		LED2_Off();
+		LED3_Off();
+		WAIT1_Waitms(1000);
+	}
 }
 
 #endif /* PL_CONFIG_HAS_LEDS */
