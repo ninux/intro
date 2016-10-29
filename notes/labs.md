@@ -11,12 +11,12 @@
 | 5   | Git & Source Tree     | x     | x      |  
 | 6   | Processor Expert      | x     | x      |  
 | 7   | Project structure     | x     | x      |  
-| 8   | LED                   |       |        |  
-| 9   | Preprocessor          |       |        |  
-| 10  | Synchronisation       |       |        |  
-| 11  | Critical Section      |       |        |  
-| 12  | Hard Faults           |       |        |  
-| 13  | Events                |       |        |  
+| 8   | LED                   | x     |        |  
+| 9   | Preprocessor          | x     |        |  
+| 10  | Synchronisation       | x     |        |  
+| 11  | Critical Section      | x     |        |  
+| 12  | Hard Faults           | x     |        |  
+| 13  | Events                | x     |        |  
 | 14  | Clock & Timer         |       |        |  
 | 15  | Keys                  |       |        |  
 | 16  | Console               |       |        |  
