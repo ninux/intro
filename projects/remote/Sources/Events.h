@@ -60,12 +60,19 @@
 #include "PTA.h"
 #include "PTB.h"
 #include "PTD.h"
+#include "USB1.h"
+#include "CDC1.h"
+#include "Tx1.h"
+#include "Rx1.h"
+#include "USB0.h"
+#include "TMOUT1.h"
 #include "WAIT1.h"
 #include "UTIL1.h"
 #include "KSDK1.h"
 #include "HF1.h"
 #include "CS1.h"
 #include "KIN1.h"
+#include "XF1.h"
 
 #ifdef __cplusplus
 extern "C" {
