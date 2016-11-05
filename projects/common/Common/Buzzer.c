@@ -60,9 +60,9 @@ typedef struct {
 } MelodyDesc;
 
 static MelodyDesc BUZ_Melodies[] = {
-  {0, sizeof(MelodyWelcome)/sizeof(MelodyWelcome[0]),         0, 0, MelodyWelcome}, /* BUZ_TUNE_WELCOME */
-  {0, sizeof(MelodyButton)/sizeof(MelodyButton[0]),           0, 0, MelodyButton}, /* BUZ_TUNE_BUTTON */
-  {0, sizeof(MelodyButtonLong)/sizeof(MelodyButtonLong[0]),   0, 0, MelodyButtonLong}, /* BUZ_TUNE_BUTTON_LONG */
+  {0, sizeof(MelodyWelcome)/sizeof(MelodyWelcome[0]),         {0, 0}, MelodyWelcome}, /* BUZ_TUNE_WELCOME */
+  {0, sizeof(MelodyButton)/sizeof(MelodyButton[0]),           {0, 0}, MelodyButton}, /* BUZ_TUNE_BUTTON */
+  {0, sizeof(MelodyButtonLong)/sizeof(MelodyButtonLong[0]),   {0, 0}, MelodyButtonLong}, /* BUZ_TUNE_BUTTON_LONG */
 };
 
 static void BUZ_Toggle(void *dataPtr) {

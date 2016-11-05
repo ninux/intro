@@ -17,6 +17,7 @@
 #include "KIN1.h"
 #if PL_CONFIG_HAS_SHELL
   #include "CLS1.h"
+  #include "Shell.h"
 #endif
 #if PL_CONFIG_HAS_BUZZER
   #include "Buzzer.h"
@@ -24,9 +25,6 @@
 #if PL_CONFIG_HAS_RTOS
   #include "FRTOS1.h"
   #include "RTOS.h"
-#endif
-#if PL_CONFIG_HAS_SHELL
-  #include "Shell.h"
 #endif
 #if PL_CONFIG_HAS_QUADRATURE
   #include "Q4CLeft.h"
@@ -52,8 +50,6 @@ void APP_EventHandler(EVNT_Handle event) {
     break;
   case EVNT_LED_OFF:
     LED1_Off();
-    LED2_Off();
-    LED3_Off();
     break;
   case EVNT_LED_HEARTBEAT:
     LED1_Neg();
@@ -109,14 +105,6 @@ void APP_EventHandler(EVNT_Handle event) {
 #endif /* PL_CONFIG_HAS_KEYS */
 
     /* \todo extend handler as needed */
-  case EVNT_LED_ON:
-	  LED1_On();
-	  LED2_On();
-	  LED3_On();
-	  break;
-  case EVNT_PAUSE_1_SEC:
-	  WAIT1_Waitms(1000);
-	  break;
   default:
     break;
    } /* switch */
@@ -124,7 +112,7 @@ void APP_EventHandler(EVNT_Handle event) {
 #endif /* PL_CONFIG_HAS_EVENTS */
 
 static const KIN1_UID RoboIDs[] = {
-  /* 0: L20, V2 */ {{0x00,0x03,0x00,0x00,0x4E,0x45,0xB7,0x21,0x4E,0x45,0x32,0x15,0x30,0x02,0x00,0x13}},
+  /* 0: L20, V2 */ {{0x00,0x03,0x00,0x00,0x67,0xCD,0xB7,0x21,0x4E,0x45,0x32,0x15,0x30,0x02,0x00,0x13}},
   /* 1: L21, V2 */ {{0x00,0x05,0x00,0x00,0x4E,0x45,0xB7,0x21,0x4E,0x45,0x32,0x15,0x30,0x02,0x00,0x13}},
   /* 2: L4, V1  */ {{0x00,0x0B,0xFF,0xFF,0x4E,0x45,0xFF,0xFF,0x4E,0x45,0x27,0x99,0x10,0x02,0x00,0x24}}, /* revert right motor */
 };

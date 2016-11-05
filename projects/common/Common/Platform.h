@@ -44,8 +44,8 @@
 #endif
 
 /* configuration from local config */
-#define PL_CONFIG_NOF_LEDS      PL_LOCAL_CONFIG_NOF_LEDS /* number of LEDs */
-#define PL_CONFIG_NOF_KEYS      PL_LOCAL_CONFIG_NOF_KEYS /* number of keys */
+#define PL_CONFIG_NOF_LEDS      PL_CONFIG_NOF_LEDS /* number of LEDs */
+#define PL_CONFIG_NOF_KEYS      PL_CONFIG_NOF_KEYS /* number of keys */
 #define PL_CONFIG_KEY_1_ISR     PL_CONFIG_KEY_1_ISR /* if key is using interrupt */
 #define PL_CONFIG_KEY_2_ISR     PL_CONFIG_KEY_2_ISR /* if key is using interrupt */
 #define PL_CONFIG_KEY_3_ISR     PL_CONFIG_KEY_3_ISR /* if key is using interrupt */
@@ -56,10 +56,10 @@
 #define PL_CONFIG_HAS_KBI       (PL_CONFIG_KEY_1_ISR||PL_CONFIG_KEY_2_ISR||PL_CONFIG_KEY_3_ISR||PL_CONFIG_KEY_4_ISR||PL_CONFIG_KEY_5_ISR||PL_CONFIG_KEY_6_ISR||PL_CONFIG_KEY_7_ISR)
 
 /* driver configuration: first entry (0 or 1) disables or enables the driver. Using the _DISABLED define the local configuration can disable it too */
-/* general features: */
+/* general features */
 #define PL_CONFIG_HAS_LEDS              (1 && !defined(PL_CONFIG_HAS_LEDS_DISABLED)) /* LED driver */
 #define PL_CONFIG_HAS_EVENTS            (1 && !defined(PL_CONFIG_HAS_EVENTS_DISABLED)) /* event driver */
-#define PL_CONFIG_HAS_TIMER             (1 && !defined(PL_CONFIG_CONFIG_HAS_TIMER_DISABLED)) /* timer interrupts */
+#define PL_CONFIG_HAS_TIMER             (1 && !defined(PL_CONFIG_HAS_TIMER_DISABLED)) /* timer interrupts */
 #define PL_CONFIG_HAS_KEYS              (1 && !defined(PL_CONFIG_HAS_KEYS_DISABLED)) /* support for keys */
 #define PL_CONFIG_HAS_TRIGGER           (1 && !defined(PL_CONFIG_HAS_TRIGGER_DISABLED)) /* support for triggers */
 #define PL_CONFIG_HAS_DEBOUNCE          (1 && !defined(PL_CONFIG_HAS_DEBOUNCE_DISABLED)) /* support for debouncing */

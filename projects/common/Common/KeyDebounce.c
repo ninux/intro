@@ -213,7 +213,7 @@ void KEYDBNC_Process(void) {
    * And you will need to disable the keyboard interrupts too!
    */
   /*! \todo Only debounce if you are not debouncing already */
-  if (1) { /* a key is pressed and we are not debouncing */
+  if (KEYDBNC_FSMdata.state==DBNC_KEY_IDLE && KEYDBNC_GetKeys()!=0) { /* a key is pressed and we are not debouncing */
   #if PL_CONFIG_HAS_KBI
     KEY_DisableInterrupts(); /* disable interrupts for all keys */
   #endif

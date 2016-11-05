@@ -10,7 +10,6 @@
 #define SOURCES_INTRO_COMMON_MASTER_LED_H_
 
 #include "Platform.h"
-#include "WAIT1.h"
 
 #if PL_CONFIG_HAS_LEDS
 
@@ -44,7 +43,7 @@
   #define LED1_Close()    LED_Close(1)
 #else
   #define LED1_On()       /* empty */
-  #define LED1_Off()       /* empty */
+  #define LED1_Off()      /* empty */
   #define LED1_Neg()      /* empty */
   #define LED1_Get()      /* empty */
   #define LED1_Put(val)   FALSE
@@ -62,7 +61,7 @@
   #define LED2_Close()    LED_Close(2)
 #else
   #define LED2_On()       /* empty */
-  #define LED2_Off()       /* empty */
+  #define LED2_Off()      /* empty */
   #define LED2_Neg()      /* empty */
   #define LED2_Get()      /* empty */
   #define LED2_Put(val)   FALSE
@@ -90,7 +89,6 @@
 
 void LED_Init(void); /* driver initialization */
 void LED_Deinit(void); /* driver deinitialization */
-void LED_Blink(uint8_t nob); /* blink led */
 #endif /* PL_CONFIG_HAS_LEDS */
 
 #endif /* SOURCES_INTRO_COMMON_MASTER_LED_H_ */

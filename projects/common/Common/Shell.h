@@ -11,11 +11,6 @@
 
 #include "Platform.h"
 #if PL_CONFIG_HAS_SHELL
-/*!
- * \brief Parse a command string
- * \param cmd Zero terminated command to be parsed
- */
-void SHELL_ParseCmd(unsigned char *cmd);
 
 /*!
  * \brief Sends a string to the shell/console stdout
