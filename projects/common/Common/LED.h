@@ -10,6 +10,7 @@
 #define SOURCES_INTRO_COMMON_MASTER_LED_H_
 
 #include "Platform.h"
+#include "CLS1.h"
 
 #if PL_CONFIG_HAS_LEDS
 
@@ -87,8 +88,13 @@
   #define LED3_Close()    /* NYI */
 #endif
 
+
 void LED_Init(void); /* driver initialization */
 void LED_Deinit(void); /* driver deinitialization */
+uint8_t LED_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
+uint8_t LED_PrintHelp(const CLS1_StdIOType *io);
+uint8_t LED_PrintStatus(const CLS1_StdIOType *io);
+uint8_t LED_PrintColor(const CLS1_StdIOType *io);
 #endif /* PL_CONFIG_HAS_LEDS */
 
 #endif /* SOURCES_INTRO_COMMON_MASTER_LED_H_ */

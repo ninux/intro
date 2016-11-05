@@ -11,6 +11,7 @@
 #include "Shell.h"
 #include "CLS1.h"
 #include "Application.h"
+#include "LED.h"
 #if PL_CONFIG_HAS_RTOS
   #include "FRTOS1.h"
 #endif
@@ -80,7 +81,7 @@
 #include "KIN1.h"
 
 #define SHELL_HANDLER_ARRAY   1
-#define SHELL_CONFIG_HAS_SHELL_EXTRA_CDC   (0 && PL_CONFIG_HAS_USB_CDC)
+#define SHELL_CONFIG_HAS_SHELL_EXTRA_CDC   (1 && PL_CONFIG_HAS_USB_CDC)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_RTT   (1 && PL_CONFIG_HAS_SEGGER_RTT)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_BT    (0 && PL_CONFIG_HAS_BLUETOOTH)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_UART  (0)
@@ -154,6 +155,7 @@ static const CLS1_ParseCommandCallback CmdParserTable[] =
 {
   CLS1_ParseCommand, /* Processor Expert Shell component, is first in list */
   SHELL_ParseCommand, /* our own module parser */
+  LED_ParseCommand,
 #if FRTOS1_PARSE_COMMAND_ENABLED
   FRTOS1_ParseCommand, /* FreeRTOS shell parser */
 #endif
