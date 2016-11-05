@@ -42,7 +42,7 @@
 #define PL_CONFIG_HAS_SQUEUE_SINGLE_CHAR_DISABLED   /* disable single character support in shell queue */
 #define PL_CONFIG_HAS_SEMAPHORE_DISABLED            /* disable semaphore test module */
 #define PL_CONFIG_HAS_CONFIG_NVM_DISABLED           /* disable NVM storage */
-#define PL_CONFIG_HAS_USB_CDC_DISABLED              /* disable USB CDC */
+//#define PL_CONFIG_HAS_USB_CDC_DISABLED              /* disable USB CDC */
 
 /* remote controller hardware functionality */
 #define PL_CONFIG_HAS_RADIO_DISABLED                /* disable Radio transceiver */
