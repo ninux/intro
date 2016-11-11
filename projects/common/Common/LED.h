@@ -12,6 +12,10 @@
 #include "Platform.h"
 #include "CLS1.h"
 
+#if PL_CONFIG_HAS_RTOS
+	#include "FRTOS1.h"
+#endif
+
 #if PL_CONFIG_HAS_LEDS
 
 #if PL_CONFIG_NOF_LEDS>=1
@@ -95,6 +99,13 @@ uint8_t LED_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_Std
 uint8_t LED_PrintHelp(const CLS1_StdIOType *io);
 uint8_t LED_PrintStatus(const CLS1_StdIOType *io);
 uint8_t LED_PrintColor(const CLS1_StdIOType *io);
+
+#if PL_CONFIG_HAS_RTOS
+	// for testing semaphores
+	static void LED_Task_Off(void *pvParameters);
+	static void LED_Task_On(void *pvParameters);
+#endif
+
 #endif /* PL_CONFIG_HAS_LEDS */
 
 #endif /* SOURCES_INTRO_COMMON_MASTER_LED_H_ */

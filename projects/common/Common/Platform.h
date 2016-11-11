@@ -44,15 +44,15 @@
 #endif
 
 /* configuration from local config */
-#define PL_CONFIG_NOF_LEDS      PL_CONFIG_NOF_LEDS /* number of LEDs */
-#define PL_CONFIG_NOF_KEYS      PL_CONFIG_NOF_KEYS /* number of keys */
-#define PL_CONFIG_KEY_1_ISR     PL_CONFIG_KEY_1_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_2_ISR     PL_CONFIG_KEY_2_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_3_ISR     PL_CONFIG_KEY_3_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_4_ISR     PL_CONFIG_KEY_4_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_5_ISR     PL_CONFIG_KEY_5_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_6_ISR     PL_CONFIG_KEY_6_ISR /* if key is using interrupt */
-#define PL_CONFIG_KEY_7_ISR     PL_CONFIG_KEY_7_ISR /* if key is using interrupt */
+#define PL_CONFIG_NOF_LEDS      PL_LOCAL_CONFIG_NOF_LEDS /* number of LEDs */
+#define PL_CONFIG_NOF_KEYS      PL_LOCAL_CONFIG_NOF_KEYS /* number of keys */
+#define PL_CONFIG_KEY_1_ISR     PL_LOCAL_CONFIG_KEY_1_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_2_ISR     PL_LOCAL_CONFIG_KEY_2_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_3_ISR     PL_LOCAL_CONFIG_KEY_3_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_4_ISR     PL_LOCAL_CONFIG_KEY_4_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_5_ISR     PL_LOCAL_CONFIG_KEY_5_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_6_ISR     PL_LOCAL_CONFIG_KEY_6_ISR /* if key is using interrupt */
+#define PL_CONFIG_KEY_7_ISR     PL_LOCAL_CONFIG_KEY_7_ISR /* if key is using interrupt */
 #define PL_CONFIG_HAS_KBI       (PL_CONFIG_KEY_1_ISR||PL_CONFIG_KEY_2_ISR||PL_CONFIG_KEY_3_ISR||PL_CONFIG_KEY_4_ISR||PL_CONFIG_KEY_5_ISR||PL_CONFIG_KEY_6_ISR||PL_CONFIG_KEY_7_ISR)
 
 /* driver configuration: first entry (0 or 1) disables or enables the driver. Using the _DISABLED define the local configuration can disable it too */

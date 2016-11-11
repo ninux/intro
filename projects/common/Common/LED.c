@@ -19,12 +19,47 @@ void LED_Deinit(void) {
 #if PL_CONFIG_NOF_LEDS>=4
   #error "only 3 LEDs supported"
 #endif
+
+#if PL_CONFIG_HAS_RTOS
+  // FRTOS1_vTaskDelete()
+#endif
 }
 
 void LED_Init(void) {
   LED1_Off();
   LED2_Off();
   LED3_Off();
+
+#if PL_CONFIG_HAS_RTOS
+  // testing semaphores
+  if (FRTOS1_xTaskCreate(LED_Task_Off, "LED_MasterTask", configMINIMAL_STACK_SIZE+100, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
+	  for(;;){} /* error */
+  }
+
+  if (FRTOS1_xTaskCreate(LED_Task_On, "LED_SlaveTask", configMINIMAL_STACK_SIZE+100, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
+	  for(;;){} /* error */
+  }
+#endif
+}
+
+// for testing semaphores
+static void LED_Task_Off(void *pvParameters) {
+	while (true) {
+		LED1_Off();
+		FRTOS1_vTaskDelay(1000/portTICK_PERIOD_MS);
+		LED1_On();
+		FRTOS1_vTaskDelay(1000/portTICK_PERIOD_MS);
+	}
+}
+
+// for testing semaphores
+static void LED_Task_On(void *pvParameters) {
+	while (true) {
+		LED2_On();
+		FRTOS1_vTaskDelay(1000/portTICK_PERIOD_MS);
+		LED2_Off();
+		FRTOS1_vTaskDelay(1000/portTICK_PERIOD_MS);
+	}
 }
 
 uint8_t LED_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io) {
