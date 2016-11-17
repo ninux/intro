@@ -30,16 +30,16 @@ void LED_Init(void) {
   LED2_Off();
   LED3_Off();
 
-#if PL_CONFIG_HAS_RTOS
-  // testing semaphores
-  if (FRTOS1_xTaskCreate(LED_Task_Off, "LED_MasterTask", configMINIMAL_STACK_SIZE+100, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
-	  for(;;){} /* error */
-  }
-
-  if (FRTOS1_xTaskCreate(LED_Task_On, "LED_SlaveTask", configMINIMAL_STACK_SIZE+100, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
-	  for(;;){} /* error */
-  }
-#endif
+//#if PL_CONFIG_HAS_RTOS
+//  // testing semaphores
+//  if (FRTOS1_xTaskCreate(LED_Task_Off, "LED_MasterTask", configMINIMAL_STACK_SIZE+100, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
+//	  for(;;){} /* error */
+//  }
+//
+//  if (FRTOS1_xTaskCreate(LED_Task_On, "LED_SlaveTask", configMINIMAL_STACK_SIZE+100, NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
+//	  for(;;){} /* error */
+//  }
+//#endif
 }
 
 // for testing semaphores

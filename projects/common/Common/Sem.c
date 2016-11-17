@@ -20,7 +20,7 @@
 #include "Sem.h"
 #include "LED.h"
 
-#define USE_SEMAPHORES 0
+#define USE_SEMAPHORES 1
 
 #if USE_SEMAPHORES
 static void vSlaveTask(void *pvParameters) {
@@ -33,6 +33,18 @@ static void vSlaveTask(void *pvParameters) {
   }
   for(;;) {
     /*! \todo Implement functionality */
+	  if (xSemaphoreTake(sem, 100/portTICK_PERIOD_MS) != pdTRUE) {
+		  LED2_On();
+		  vTaskDelay(250/portTICK_PERIOD_MS);
+		  LED2_Off();
+		  vTaskDelay(250/portTICK_PERIOD_MS);
+	  } else {
+		  LED1_Off();
+		  LED2_On();
+		  vTaskDelay(1000/portTICK_PERIOD_MS);
+		  LED1_Off();
+		  LED2_Off();
+	  }
   }
 }
 
@@ -51,8 +63,11 @@ static void vMasterTask(void *pvParameters) {
     for(;;){} /* error */
   }
   for(;;) {
-    (void)xSemaphoreGive(sem); /* give control to other task */
-    vTaskDelay(1000/portTICK_PERIOD_MS);
+    if (xSemaphoreGive(sem) != pdTRUE) {
+    	LED1_On();
+    }/* give control to other task */
+    LED1_On();
+    vTaskDelay(5000/portTICK_PERIOD_MS);
   }
 }
 #endif /* USE_SEMAPHORES */
