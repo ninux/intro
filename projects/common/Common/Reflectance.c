@@ -153,6 +153,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   for(i=0;i<REF_NOF_SENSORS;i++) {
     SensorFctArray[i].SetInput(); /* turn I/O line as input */
   }
+  EnterCritical();
   (void)RefCnt_ResetCounter(timerHandle); /* reset timer counter */
   do {
     timerVal = RefCnt_GetCounterValue(timerHandle);
@@ -168,6 +169,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
     }
   } while(cnt!=REF_NOF_SENSORS);
   LED_IR_Off(); /* IR LED's off */
+  ExitCritical();
 }
 
 static void REF_CalibrateMinMax(SensorTimeType min[REF_NOF_SENSORS], SensorTimeType max[REF_NOF_SENSORS], SensorTimeType raw[REF_NOF_SENSORS]) {

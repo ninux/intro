@@ -206,6 +206,7 @@ uint8_t MOT_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_Std
 
 void MOT_Deinit(void) {
   /* nothig needed for now */
+
 }
 
 void MOT_Init(void) {
