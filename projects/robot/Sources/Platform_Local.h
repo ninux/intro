@@ -54,7 +54,7 @@
 #define PL_CONFIG_HAS_LCD_MENU_DISABLED             /* disable LCD menu */
 
 /* robot hardware functionality */
-#define PL_CONFIG_HAS_MOTOR_DISABLED                /* disable motor */
+//#define PL_CONFIG_HAS_MOTOR_DISABLED                /* disable motor */
 #define PL_CONFIG_HAS_REFLECTANCE_DISABLED          /* disable IR reflectance sensor */
 #define PL_CONFIG_HAS_QUADRATURE_DISABLED           /* disable quadrature encoder */
 #define PL_CONFIG_HAS_MOTOR_TACHO_DISABLED          /* disable tacho */
