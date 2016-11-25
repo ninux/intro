@@ -35,6 +35,8 @@ extern "C" {
 
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
+#include "Platform.h"
+#include "Timer.h"
 
 /*
 ** ===================================================================
@@ -159,7 +161,10 @@ void FRTOS1_vApplicationMallocFailedHook(void)
 */
 void QuadInt_OnInterrupt(void)
 {
-  /* Write your code here ... */
+#if PL_CONFIG_HAS_QUADRATURE
+  Q4CLeft_Sample();
+  Q4CRight_Sample();
+#endif
 }
 
 /* END Events */

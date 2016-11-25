@@ -96,6 +96,12 @@
 #include "HF1.h"
 #include "CS1.h"
 #include "XF1.h"
+#include "I2C1.h"
+#include "SDA1.h"
+#include "BitIoLdd14.h"
+#include "SCL1.h"
+#include "BitIoLdd15.h"
+#include "WAIT2.h"
 
 #ifdef __cplusplus
 extern "C" {

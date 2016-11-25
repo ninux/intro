@@ -93,6 +93,12 @@
 #include "HF1.h"
 #include "CS1.h"
 #include "XF1.h"
+#include "I2C1.h"
+#include "SDA1.h"
+#include "BitIoLdd14.h"
+#include "SCL1.h"
+#include "BitIoLdd15.h"
+#include "WAIT2.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
