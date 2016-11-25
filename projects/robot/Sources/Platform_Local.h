@@ -57,7 +57,7 @@
 //#define PL_CONFIG_HAS_MOTOR_DISABLED                /* disable motor */
 //#define PL_CONFIG_HAS_REFLECTANCE_DISABLED          /* disable IR reflectance sensor */
 #define PL_CONFIG_HAS_QUADRATURE_DISABLED           /* disable quadrature encoder */
-#define PL_CONFIG_HAS_MOTOR_TACHO_DISABLED          /* disable tacho */
+//#define PL_CONFIG_HAS_MOTOR_TACHO_DISABLED          /* disable tacho */
 #define PL_CONFIG_HAS_MPC4728_DISABLED              /* disable MPC4728 (only for V1 robot) */
 #define PL_CONFIG_HAS_QUAD_CALIBRATION_DISABLED     /* disable quadrature calibration (only for V1 robot) */
 #define PL_CONFIG_HAS_PID_DISABLED                  /* disable PID */
