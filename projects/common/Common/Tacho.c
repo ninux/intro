@@ -117,7 +117,7 @@ void TACHO_Sample(void) {
  * \param io I/O channel to use for printing status
  */
 static void TACHO_PrintStatus(const CLS1_StdIOType *io) {
-  TACHO_CalcSpeed(); /*! \todo only temporary until this is done periodically */
+  //TACHO_CalcSpeed(); /*! \todo only temporary until this is done periodically */
   CLS1_SendStatusStr((unsigned char*)"Tacho", (unsigned char*)"\r\n", io->stdOut);
   CLS1_SendStatusStr((unsigned char*)"  L speed", (unsigned char*)"", io->stdOut);
   CLS1_SendNum32s(TACHO_GetSpeed(TRUE), io->stdOut);
@@ -127,7 +127,7 @@ static void TACHO_PrintStatus(const CLS1_StdIOType *io) {
   CLS1_SendStr((unsigned char*)" steps/sec\r\n", io->stdOut);
 }
 
-/*! 
+/*! calculate speed
  * \brief Prints the help text to the console
  * \param io I/O channel to be used
  */

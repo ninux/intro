@@ -351,7 +351,7 @@ static void DriveTask(void *pvParameters) {
     } else if (DRV_Status.mode==DRV_MODE_NONE) {
       /* do nothing */
     }
-    FRTOS1_vTaskDelayUntil(&xLastWakeTime, 5/portTICK_PERIOD_MS);
+    FRTOS1_vTaskDelayUntil(&xLastWakeTime, 10/portTICK_PERIOD_MS);
   } /* for */
 }
 
