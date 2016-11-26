@@ -37,6 +37,7 @@ extern "C" {
 /* User includes (#include below this line is not maintained by Processor Expert) */
 #include "Platform.h"
 #include "Timer.h"
+#include "Tacho.h"
 
 /*
 ** ===================================================================
@@ -98,6 +99,7 @@ void FRTOS1_vApplicationStackOverflowHook(TaskHandle_t pxTask, char *pcTaskName)
 */
 void FRTOS1_vApplicationTickHook(void)
 {
+	TACHO_Sample();
   /* Called for every RTOS tick. */
   /* Write your code here ... */
 }

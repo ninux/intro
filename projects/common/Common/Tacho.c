@@ -18,10 +18,11 @@
 #include "FRTOS1.h"
 #include "Timer.h"
 
-#define TACHO_SAMPLE_PERIOD_MS (10)
+#define TACHO_SAMPLE_PERIOD_MS (2)
   /*!< \todo speed sample period in ms. Make sure that speed is sampled at the given rate. */
-#define NOF_HISTORY (16U+1U)
-  /*!< number of samples for speed calculation (>0):the more, the better, but the slower. */
+#define NOF_HISTORY (4U)
+//  A “U” suffix shall be applied to all constants of unsigned type.”
+/*!< number of samples for speed calculation (>0):the more, the better, but the slower. */
 
 /*! \todo Check types for position: code shall use the same type as the quadrature counter!!!!! */
 static volatile Q4CLeft_QuadCntrType TACHO_LeftPosHistory[NOF_HISTORY], TACHO_RightPosHistory[NOF_HISTORY];
