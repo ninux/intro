@@ -37,13 +37,13 @@ static int32_t PID(int32_t currVal, int32_t setVal, PID_Config *config) {
   error = setVal-currVal; /* calculate error */
   pid = (error*config->pFactor100)/100; /* P part */
   config->integral += error; /* integrate error */
-  if (config->integral>config->iAntiWindup) {
+  if (config->integral > config->iAntiWindup) {
     config->integral = config->iAntiWindup;
-  } else if (config->integral<-config->iAntiWindup) {
+  } else if (config->integral < -config->iAntiWindup) {
     config->integral = -config->iAntiWindup;
   }
   pid += (config->integral*config->iFactor100)/100; /* add I part */
-  pid += ((error-config->lastError)*config->dFactor100)/100; /* add D part */
+  pid += ((error - config->lastError)*config->dFactor100)/100; /* add D part */
   config->lastError = error; /* remember for next iteration of D part */
   return pid;
 }
@@ -70,7 +70,7 @@ static void PID_SpeedCfg(int32_t currSpeed, int32_t setSpeed, bool isLeft, PID_C
   } else {
     motHandle = MOT_GetMotorHandle(MOT_MOTOR_RIGHT);
   }
-  MOT_SetVal(motHandle, 0xFFFF-speed); /* PWM is low active */
+  MOT_SetVal(motHandle, (uint16_t)(0xFFFF-speed)); /* PWM is low active */
   MOT_SetDirection(motHandle, direction);
   MOT_UpdatePercent(motHandle, direction);
 }
