@@ -20,8 +20,8 @@
 
 #define TACHO_SAMPLE_PERIOD_MS (2)
   /*!< \todo speed sample period in ms. Make sure that speed is sampled at the given rate. */
-#define NOF_HISTORY (4U)
-//  A “U” suffix shall be applied to all constants of unsigned type.”
+#define NOF_HISTORY (2U)
+//  A â€œUâ€� suffix shall be applied to all constants of unsigned type.â€�
 /*!< number of samples for speed calculation (>0):the more, the better, but the slower. */
 
 /*! \todo Check types for position: code shall use the same type as the quadrature counter!!!!! */
