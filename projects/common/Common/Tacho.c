@@ -20,7 +20,7 @@
 
 #define TACHO_SAMPLE_PERIOD_MS (2)
   /*!< \todo speed sample period in ms. Make sure that speed is sampled at the given rate. */
-#define NOF_HISTORY (2U)
+#define NOF_HISTORY (16U)
 //  A â€œUâ€� suffix shall be applied to all constants of unsigned type.â€�
 /*!< number of samples for speed calculation (>0):the more, the better, but the slower. */
 
