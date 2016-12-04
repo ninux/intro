@@ -24,7 +24,7 @@ typedef struct {
   int32_t integral;
 } PID_Config;
 
-/*! \todo Add your own additional configurations as needed, at least with a position config */
+/*! \todo Add your own additional configurations as needed */
 static PID_Config lineFwConfig;
 static PID_Config speedLeftConfig, speedRightConfig;
 static PID_Config posLeftConfig, posRightConfig;
@@ -48,7 +48,7 @@ static int32_t PID(int32_t currVal, int32_t setVal, PID_Config *config) {
   return pid;
 }
 
-void PID_SpeedCfg(int32_t currSpeed, int32_t setSpeed, bool isLeft, PID_Config *config) {
+static void PID_SpeedCfg(int32_t currSpeed, int32_t setSpeed, bool isLeft, PID_Config *config) {
   int32_t speed;
   MOT_Direction direction=MOT_DIR_FORWARD;
   MOT_MotorDevice *motHandle;
@@ -100,14 +100,8 @@ static uint8_t errorWithinPercent(int32_t error) {
   return error/(REF_MAX_LINE_VALUE/2/100);
 }
 
-#define PID_DEBUG 0
-
-void PID_LineCfg(uint16_t currLine, uint16_t setLine, PID_Config *config) {
+static void PID_LineCfg(uint16_t currLine, uint16_t setLine, PID_Config *config) {
   int32_t pid, speed, speedL, speedR;
-#if PID_DEBUG
-  unsigned char buf[16];
-  static uint8_t cnt = 0;
-#endif
   uint8_t errorPercent;
   MOT_Direction directionL=MOT_DIR_FORWARD, directionR=MOT_DIR_FORWARD;
 
@@ -177,39 +171,6 @@ void PID_LineCfg(uint16_t currLine, uint16_t setLine, PID_Config *config) {
   MOT_SetDirection(MOT_GetMotorHandle(MOT_MOTOR_LEFT), directionL);
   MOT_SetVal(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), 0xFFFF-speedR); /* PWM is low active */
   MOT_SetDirection(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), directionR);
-#if PID_DEBUG /* debug diagnostic */
-  {
-    cnt++;
-    if (cnt>10) { /* limit number of messages to the console */
-      CLS1_StdIO_OutErr_FctType ioOut = CLS1_GetStdio()->stdOut;
-      cnt = 0;
-
-      CLS1_SendStr((unsigned char*)"line:", ioOut);
-      buf[0] = '\0';
-      UTIL1_strcatNum16u(buf, sizeof(buf), currLine);
-      CLS1_SendStr(buf, ioOut);
-
-      CLS1_SendStr((unsigned char*)" sum:", ioOut);
-      buf[0] = '\0';
-      UTIL1_strcatNum32Hex(buf, sizeof(buf), integral);
-      CLS1_SendStr(buf, ioOut);
-
-      CLS1_SendStr((unsigned char*)" left:", ioOut);
-      CLS1_SendStr(directionL==MOT_DIR_FORWARD?(unsigned char*)"fw ":(unsigned char*)"bw ", ioOut);
-      buf[0] = '\0';
-      UTIL1_strcatNum16Hex(buf, sizeof(buf), speedL);
-      CLS1_SendStr(buf, ioOut);
-
-      CLS1_SendStr((unsigned char*)" right:", ioOut);
-      CLS1_SendStr(directionR==MOT_DIR_FORWARD?(unsigned char*)"fw ":(unsigned char*)"bw ", ioOut);
-      buf[0] = '\0';
-      UTIL1_strcatNum16Hex(buf, sizeof(buf), speedR);
-      CLS1_SendStr(buf, ioOut);
-
-      CLS1_SendStr((unsigned char*)"\r\n", ioOut);
-    }
-  }
-#endif
 }
 
 void PID_Line(uint16_t currLine, uint16_t setLine) {
@@ -224,7 +185,7 @@ void PID_Speed(int32_t currSpeed, int32_t setSpeed, bool isLeft) {
   }
 }
 
-void PID_PosCfg(int32_t currPos, int32_t setPos, bool isLeft, PID_Config *config) {
+static void PID_PosCfg(int32_t currPos, int32_t setPos, bool isLeft, PID_Config *config) {
   int32_t speed, val;
   MOT_Direction direction=MOT_DIR_FORWARD;
   MOT_MotorDevice *motHandle;
@@ -441,17 +402,17 @@ void PID_Deinit(void) {
 
 void PID_Init(void) {
   /*! \todo determine your PID values */
-  speedLeftConfig.pFactor100 = 0;
-  speedLeftConfig.iFactor100 = 0;
+  speedLeftConfig.pFactor100 = 2000;
+  speedLeftConfig.iFactor100 = 200;
   speedLeftConfig.dFactor100 = 0;
-  speedLeftConfig.iAntiWindup = 0;
+  speedLeftConfig.iAntiWindup = 5000;
   speedLeftConfig.lastError = 0;
   speedLeftConfig.integral = 0;
 
-  speedRightConfig.pFactor100 = 0;
-  speedRightConfig.iFactor100 = 0;
+  speedRightConfig.pFactor100 = 2000;
+  speedRightConfig.iFactor100 = 200;
   speedRightConfig.dFactor100 = 0;
-  speedRightConfig.iAntiWindup = 0;
+  speedRightConfig.iAntiWindup = 5000;
   speedRightConfig.lastError = 0;
   speedRightConfig.integral = 0;
 

@@ -175,7 +175,7 @@ uint8_t DRV_SetPos(int32_t left, int32_t right) {
 }
 
 #if PL_CONFIG_HAS_SHELL
-uint8_t *DRV_GetModeStr(DRV_Mode mode) {
+static uint8_t *DRV_GetModeStr(DRV_Mode mode) {
   switch(mode) {
     case DRV_MODE_NONE:   return (uint8_t*)"NONE";
     case DRV_MODE_STOP:   return (uint8_t*)"STOP";
@@ -351,7 +351,7 @@ static void DriveTask(void *pvParameters) {
     } else if (DRV_Status.mode==DRV_MODE_NONE) {
       /* do nothing */
     }
-    FRTOS1_vTaskDelayUntil(&xLastWakeTime, 10/portTICK_PERIOD_MS);
+    FRTOS1_vTaskDelayUntil(&xLastWakeTime, 5/portTICK_PERIOD_MS);
   } /* for */
 }
 
