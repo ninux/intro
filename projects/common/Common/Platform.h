@@ -43,6 +43,9 @@
   #error "One board type has to be defined in Platform_Local.h!"
 #endif
 
+#define ROBO_STYGER 3	/* hw-number 23 */
+#define ROBO_GROUP  4	/* hw-number 11 */
+
 /* configuration from local config */
 #define PL_CONFIG_NOF_LEDS      PL_LOCAL_CONFIG_NOF_LEDS /* number of LEDs */
 #define PL_CONFIG_NOF_KEYS      PL_LOCAL_CONFIG_NOF_KEYS /* number of keys */

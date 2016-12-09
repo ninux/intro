@@ -211,8 +211,14 @@ void MOT_Deinit(void) {
 
 void MOT_Init(void) {
 #if MOTOR_HAS_INVERT
-  motorL.inverted = FALSE;
-  motorR.inverted = FALSE;
+//  if (ROBO_NUMBER == ROBO_GROUP) {
+//    motorL.inverted = FALSE;
+//    motorR.inverted = FALSE;
+//  }
+//  if (ROBO_NUMBER == ROBO_STYGER) {
+//	  motorL.inverted = TRUE;
+//	  motorR.inverted = TRUE;
+//  }
 #endif
   motorL.DirPutVal = DirLPutVal;
   motorR.DirPutVal = DirRPutVal;

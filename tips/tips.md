@@ -9,3 +9,6 @@
 
 # Lab overview
 * Make a sheet with all labs to checkmark them. Add notes beside for questions, problems and hints for the exam preparation. 
+
+# PID controls overview
+* Make a sheet with a summary of the PID controls
