@@ -343,12 +343,16 @@ static void DriveTask(void *pvParameters) {
       PID_Speed(TACHO_GetSpeed(TRUE), DRV_Status.speed.left, TRUE);
       PID_Speed(TACHO_GetSpeed(FALSE), DRV_Status.speed.right, FALSE);
     } else if (DRV_Status.mode==DRV_MODE_STOP) {
-      PID_Speed(TACHO_GetSpeed(TRUE), 0, TRUE);
-      PID_Speed(TACHO_GetSpeed(FALSE), 0, FALSE);
+      PID_Speed(TACHO_GetSpeed(TRUE), 0, TRUE);                // set pid to 0
+      PID_Speed(TACHO_GetSpeed(FALSE), 0, FALSE);              // set pid to 0
+      //MOT_SetVal(MOT_GetMotorHandle(MOT_MOTOR_LEFT), 0xFFFF);  // free motor momentum left
+      //MOT_SetVal(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), 0xFFFF); // free motor momentum right
     } else if (DRV_Status.mode==DRV_MODE_POS) {
       PID_Pos(Q4CLeft_GetPos(), DRV_Status.pos.left, TRUE);
       PID_Pos(Q4CRight_GetPos(), DRV_Status.pos.right, FALSE);
     } else if (DRV_Status.mode==DRV_MODE_NONE) {
+      //MOT_SetVal(MOT_GetMotorHandle(MOT_MOTOR_LEFT), 0xFFFF);  // free motor momentum left
+      //MOT_SetVal(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), 0xFFFF); // free motor momentum right
       /* do nothing */
     }
     FRTOS1_vTaskDelayUntil(&xLastWakeTime, 5/portTICK_PERIOD_MS);

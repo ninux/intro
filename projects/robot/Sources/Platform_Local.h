@@ -1,5 +1,5 @@
 /**
-b * \file
+ * \file
  * \brief Local project configuration file.
  * \author Erich Styger, erich.styger@hslu.ch
  *
