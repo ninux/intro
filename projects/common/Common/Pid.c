@@ -402,17 +402,17 @@ void PID_Deinit(void) {
 
 void PID_Init(void) {
   /*! \todo determine your PID values */
-  speedLeftConfig.pFactor100 = 2000;
-  speedLeftConfig.iFactor100 = 500;
+  speedLeftConfig.pFactor100 = 1900;
+  speedLeftConfig.iFactor100 = 200;
   speedLeftConfig.dFactor100 = 0;
-  speedLeftConfig.iAntiWindup = 5000;
+  speedLeftConfig.iAntiWindup = 10000;
   speedLeftConfig.lastError = 0;
   speedLeftConfig.integral = 0;
 
-  speedRightConfig.pFactor100 = 2000;
-  speedRightConfig.iFactor100 = 500;
+  speedRightConfig.pFactor100 = 1900;
+  speedRightConfig.iFactor100 = 200;
   speedRightConfig.dFactor100 = 0;
-  speedRightConfig.iAntiWindup = 5000;
+  speedRightConfig.iAntiWindup = 1000;
   speedRightConfig.lastError = 0;
   speedRightConfig.integral = 0;
 

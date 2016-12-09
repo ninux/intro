@@ -586,7 +586,17 @@ static void ReflTask (void *pvParameters) {
 void REF_Deinit(void) {
 }
 
+//static void TestTaskRefl (void *pvParameters) {
+//	(void)pvParameters; /* not used */
+//	for(;;) {
+//	    FRTOS1_vTaskDelay(10/portTICK_PERIOD_MS);
+//	  }
+//}
+
 void REF_Init(void) {
+//	if (FRTOS1_xTaskCreate(TestTaskRefl, "TTR", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, NULL) != pdPASS) {
+//		for(;;){} /* error */
+//	}
 #if REF_START_STOP_CALIB
   vSemaphoreCreateBinary(REF_StartStopSem);
   if (REF_StartStopSem==NULL) { /* semaphore creation failed */
@@ -606,8 +616,11 @@ void REF_Init(void) {
   refState = REF_STATE_INIT;
   timerHandle = RefCnt_Init(NULL);
   /*! \todo You might need to adjust priority or other task settings */
-  if (FRTOS1_xTaskCreate(ReflTask, "Refl", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS) {
+  if (FRTOS1_xTaskCreate(ReflTask, "RFX", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+4, NULL) != pdPASS) {
     for(;;){} /* error */
+  }else
+  {
+	  refState = REF_STATE_INIT;
   }
 }
 #endif /* PL_HAS_REFLECTANCE */
