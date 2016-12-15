@@ -95,9 +95,20 @@ static void StateMachine(void) {
         LF_currState = STATE_TURN; /* make turn */
         SHELL_SendString((unsigned char*)"no line, turn..\r\n");
     #else
-        LF_currState = STATE_STOP; /* stop if we do not have a line any more */
-        DRV_SetMode(DRV_MODE_STOP);
-        SHELL_SendString((unsigned char*)"No line, stopped!\r\n");
+        //LF_currState = STATE_STOP; /* stop if we do not have a line any more */
+    	REF_LineKind currLineKind;
+        currLineKind = REF_GetLineKind();
+        switch(currLineKind){
+        case REF_LINE_NONE:
+           	LF_currState = STATE_TURN;
+           	break;
+        case REF_LINE_FULL:
+        	LF_currState = STATE_STOP;
+        	DRV_SetMode(DRV_MODE_STOP);
+        	SHELL_SendString((unsigned char*)"Reached Target Position!\r\n");
+        default:
+        	break;
+        }
     #endif
       }
       break;
@@ -105,6 +116,9 @@ static void StateMachine(void) {
     case STATE_TURN:
       #if PL_CONFIG_HAS_LINE_MAZE
       /*! \todo Handle maze turning */
+	  #else
+    	TURN_TurnAngle(180, NULL);
+    	LF_currState = STATE_FOLLOW_SEGMENT;
       #endif /* PL_CONFIG_HAS_LINE_MAZE */
       break;
 
