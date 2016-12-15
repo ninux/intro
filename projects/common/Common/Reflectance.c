@@ -153,17 +153,18 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
     raw[i] = MAX_SENSOR_VALUE;
   }
   WAIT1_Waitus(50); /* give at least 10 us to charge the capacitor */
+  EnterCritical();
   for(i=0;i<REF_NOF_SENSORS;i++) {
     SensorFctArray[i].SetInput(); /* turn I/O line as input */
   }
-  EnterCritical();
+  //EnterCritical();
   (void)RefCnt_ResetCounter(timerHandle); /* reset timer counter */
   do {
     timerVal = RefCnt_GetCounterValue(timerHandle);
     cnt = 0;
     for(i=0;i<REF_NOF_SENSORS;i++) {
       if (raw[i]==MAX_SENSOR_VALUE) { /* not measured yet? */
-        if (SensorFctArray[i].GetVal()==0) {
+        if (SensorFctArray[i].GetVal()==0 || timerVal > 0x1400) {
           raw[i] =(uint16_t)timerVal;
         }
       } else { /* have value */
@@ -173,6 +174,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   } while(cnt!=REF_NOF_SENSORS);
   LED_IR_Off(); /* IR LED's off */
   ExitCritical();
+  (void)xSemaphoreGive(mutexHandle);
 }
 
 static void REF_CalibrateMinMax(SensorTimeType min[REF_NOF_SENSORS], SensorTimeType max[REF_NOF_SENSORS], SensorTimeType raw[REF_NOF_SENSORS]) {
@@ -616,7 +618,7 @@ void REF_Init(void) {
   refState = REF_STATE_INIT;
   timerHandle = RefCnt_Init(NULL);
   /*! \todo You might need to adjust priority or other task settings */
-  if (FRTOS1_xTaskCreate(ReflTask, "RFX", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+4, NULL) != pdPASS) {
+  if (FRTOS1_xTaskCreate(ReflTask, "Refl", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+3, NULL) != pdPASS) {
     for(;;){} /* error */
   }else
   {

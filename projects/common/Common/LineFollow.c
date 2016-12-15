@@ -96,6 +96,7 @@ static void StateMachine(void) {
         SHELL_SendString((unsigned char*)"no line, turn..\r\n");
     #else
         LF_currState = STATE_STOP; /* stop if we do not have a line any more */
+        DRV_SetMode(DRV_MODE_STOP);
         SHELL_SendString((unsigned char*)"No line, stopped!\r\n");
     #endif
       }
@@ -200,7 +201,7 @@ void LF_Deinit(void) {
 
 void LF_Init(void) {
   LF_currState = STATE_IDLE;
-  if (xTaskCreate(LineTask, "Line", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, &LFTaskHandle) != pdPASS) {
+  if (xTaskCreate(LineTask, "Line", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+3, &LFTaskHandle) != pdPASS) {
     for(;;){} /* error */
   }
 }

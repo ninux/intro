@@ -33,6 +33,12 @@
 #if PL_CONFIG_HAS_MOTOR
   #include "Motor.h"
 #endif
+#if PL_CONFIG_HAS_LINE_FOLLOW
+  #include "LineFollow.h"
+#endif
+#if PL_CONFIG_HAS_REFLECTANCE
+  #include "Reflectance.h"
+#endif
 #if PL_CONFIG_BOARD_IS_ROBO_V2
   #include "PORT_PDD.h"
 #endif
@@ -58,13 +64,17 @@ void APP_EventHandler(EVNT_Handle event) {
 #if PL_CONFIG_HAS_KEYS
   #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
-    LED1_Neg();
+    //LED1_Neg();
     //CLS1_SendStr("SW1 pressed\r\n", CLS1_GetStdio()->stdOut);
-    SHELL_SendString("SW1 pressed\r\n");
+    //SHELL_SendString("SW1 pressed\r\n");
+	  //LF_StartStopFollowing();
+	  LF_StartFollowing();
     #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_BUTTON);
     #endif
     break;
+  case EVNT_SW1_LPRESSED:
+	  REF_CalibrateStartStop();
   #endif
   #if PL_CONFIG_NOF_KEYS>=2
   case EVNT_SW2_PRESSED:
