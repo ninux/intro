@@ -9,9 +9,9 @@
 #define RNETAPP_H_
 
 #include "Platform.h"
-#if PL_CONFIG_HAS_RADIO
-#include "RNWK.h"
 
+#if PL_CONFIG_HAS_RADIO
+	#include "RNWK.h"
 #if PL_CONFIG_HAS_SHELL
   #include "CLS1.h"
   uint8_t RNETA_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);

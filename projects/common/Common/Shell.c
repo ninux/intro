@@ -65,6 +65,7 @@
   #include "RApp.h"
   #include "RNet_App.h"
   #include "RNetConf.h"
+  #include "SM1.h"
 #endif
 #if RNET_CONFIG_REMOTE_STDIO
   #include "RStdIO.h"
@@ -84,6 +85,7 @@
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_CDC   (1 && PL_CONFIG_HAS_USB_CDC)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_RTT   (1 && PL_CONFIG_HAS_SEGGER_RTT)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_BT    (0 && PL_CONFIG_HAS_BLUETOOTH)
+#define SHELL_CONFIG_HAS_SHELL_EXTRA_RADIO (1 && PL_CONFIG_HAS_RADIO)
 #define SHELL_CONFIG_HAS_SHELL_EXTRA_UART  (0)
 
 
@@ -94,7 +96,7 @@ typedef struct {
   size_t bufSize;
 } SHELL_IODesc;
 
-#if CLS1_DEFAULT_SERIAL && (SHELL_CONFIG_HAS_SHELL_EXTRA_CDC || SHELL_CONFIG_HAS_SHELL_EXTRA_RTT)
+#if CLS1_DEFAULT_SERIAL && (SHELL_CONFIG_HAS_SHELL_EXTRA_CDC || SHELL_CONFIG_HAS_SHELL_EXTRA_RTT || SHELL_CONFIG_HAS_SHELL_EXTRA_RADIO)
   static void SHELL_SendChar(uint8_t ch) {
     /* everything sent to the standard I/O will be sent to additional channels */
     CLS1_SendChar(ch);
@@ -103,6 +105,9 @@ typedef struct {
   #endif
   #if SHELL_CONFIG_HAS_SHELL_EXTRA_RTT
     RTT1_SendChar(ch); /* copy on RTT */
+  #endif
+  #if SHELL_CONFIG_HAS_SHELL_EXTRA_RADIO
+    SM1_SendChar(ch); /* copy on RADIO */
   #endif
   }
 
@@ -123,6 +128,11 @@ typedef struct {
     return CLS1_GetStdio();
   }
 #endif
+
+//#if RNET_CONFIG_REMOTE_STDIO
+//  static unsigned char radio_cmd_buf[48];
+ // CLS1_ConstStdIOType *ioRemote = RSTDIO_GetStdioRx();
+//#endif
 
 static const SHELL_IODesc ios[] =
 {
@@ -285,13 +295,18 @@ static void ShellTask(void *pvParameters) {
   int i;
 #endif
   /* \todo Extend as needed */
-
+#if RNET_CONFIG_REMOTE_STDIO
+  static unsigned char radio_cmd_buf[48];
+  CLS1_ConstStdIOType *ioRemote = RSTDIO_GetStdioRx();
+#endif
   (void)pvParameters; /* not used */
+
 #if SHELL_HANDLER_ARRAY
   /* initialize buffers */
   for(i=0;i<sizeof(ios)/sizeof(ios[0]);i++) {
     ios[i].buf[0] = '\0';
   }
+  radio_cmd_buf[0] = '\0';
 #endif
 #if CLS1_DEFAULT_SERIAL
   (void)CLS1_ParseWithCommandTable((unsigned char*)CLS1_CMD_HELP, ios[0].stdio, CmdParserTable);
@@ -303,6 +318,8 @@ static void ShellTask(void *pvParameters) {
     for(i=0;i<sizeof(ios)/sizeof(ios[0]);i++) {
       (void)CLS1_ReadAndParseWithCommandTable(ios[i].buf, ios[i].bufSize, ios[i].stdio, CmdParserTable);
     }
+    RSTDIO_Print(ios[0].stdio);
+    (void)CLS1_ReadAndParseWithCommandTable(radio_cmd_buf, sizeof(radio_cmd_buf), ioRemote, CmdParserTable);
 #endif
 #if PL_CONFIG_HAS_SHELL_QUEUE
 #if PL_CONFIG_SQUEUE_SINGLE_CHAR
