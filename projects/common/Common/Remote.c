@@ -14,7 +14,7 @@
 #include "UTIL1.h"
 #include "Shell.h"
 #if PL_CONFIG_HAS_PID
-  #include "PID.h"
+  #include "Pid.h"
 #endif
 #if PL_CONFIG_HAS_MOTOR
   #include "Motor.h"
